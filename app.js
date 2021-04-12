@@ -46,7 +46,7 @@ new Products('usb.gif', 'https://github.com/LTUC/amman-201d20/blob/main/class-11
 new Products('water-can', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/water-can.jpg?raw=true');
 new Products('wine-glass', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/wine-glass.jpg?raw=true');
 
-console.log(Products.allImages);
+// console.log(Products.allImages);
 
 function generatRandomIndex() {
 
@@ -103,31 +103,32 @@ function userClick(event) {
         }
         renderImages();
 
-    } else { 
-        
-        
+    } else {
+
+
         imagesContainer.removeEventListener('click', userClick);
     }
     renderImages();
-    
-  
-    
+
+
+
 }
 
 
 
-let viewResults = document.getElementById('viewResults');
-        viewResults.addEventListener('click', ResultBtn);
 
-         function ResultBtn () {
-             
-            let list = document.getElementById('votesList');
-            let result;
-            for (let i = 0; i < Products.allImages.length; i++) {
-                result = document.createElement('li');
-                list.appendChild(result);
-        
-                result.textContent = `${Products.allImages[i].name} has ${Products.allImages[i].votes} votes and was seen  ${Products.allImages[i].shownTimes} times`
-        
-            }
-        }
+let viewResults = document.getElementById('viewResults');
+viewResults.addEventListener('click', ResultBtn);
+
+function ResultBtn() {
+
+    let list = document.getElementById('votesList');
+    let result;
+    for (let i = 0; i < Products.allImages.length; i++) {
+        result = document.createElement('li');
+        list.appendChild(result);
+
+        result.textContent = `${Products.allImages[i].name} has ${Products.allImages[i].votes} votes and was seen  ${Products.allImages[i].shownTimes} times`
+
+    }
+}
