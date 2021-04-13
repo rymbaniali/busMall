@@ -31,6 +31,8 @@ function Products(name, source) {
 Products.allImages = [];
 
 
+
+
 new Products('bag', 'images/bag.jpg');
 new Products('banana', 'images/banana.jpg');
 new Products('bathroom', 'images/bathroom.jpg');
@@ -51,6 +53,7 @@ new Products('unicorn', 'images/unicorn.jpg');
 new Products('usb.gif', 'images/usb.gif');
 new Products('water-can', 'images/water-can.jpg');
 new Products('wine-glass', 'images/wine-glass.jpg');
+
 
 console.log(Products.allImages);
 
@@ -138,7 +141,9 @@ function userClick(event) {
 
         imagesContainer.removeEventListener('click', userClick);
     }
+
  
+
 
 }
 
