@@ -22,6 +22,7 @@ function Products(name, source) {
 
 }
 
+
 Products.allImages = [];
 
 
@@ -46,14 +47,17 @@ new Products('usb.gif', 'https://github.com/LTUC/amman-201d20/blob/main/class-11
 new Products('water-can', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/water-can.jpg?raw=true');
 new Products('wine-glass', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/wine-glass.jpg?raw=true');
 
-// console.log(Products.allImages);
+console.log(Products.allImages);
+
+
+
 
 function generatRandomIndex() {
 
     return Math.floor(Math.random() * Products.allImages.length);
 
 }
-// console.log(generatRandomIndex);
+
 
 function renderImages() {
 
@@ -62,21 +66,28 @@ function renderImages() {
     thirdImageIndex = generatRandomIndex();
 
 
-    while (firstImageElement === secondImageElement || firstImageElement === thirdImageElement || secondImageElement === thirdImageElement) {
+    while (firstImageIndex === secondImageIndex || firstImageIndex === thirdImageIndex || secondImageIndex === thirdImageIndex) {
         firstImageIndex = generatRandomIndex();
         secondImageIndex = generatRandomIndex();
         thirdImageIndex = generatRandomIndex();
 
     }
 
-    firstImageElement.src = Products.allImages[firstImageIndex].source;;
+    firstImageElement.src = Products.allImages[firstImageIndex].source;
+    Products.allImages[firstImageIndex].shownTimes++;
+
+
     secondImageElement.src = Products.allImages[secondImageIndex].source;
+    Products.allImages[secondImageIndex].shownTimes++;
+
+
     thirdImageElement.src = Products.allImages[thirdImageIndex].source;
+    Products.allImages[thirdImageIndex].shownTimes++;
 
 }
 
-
 renderImages();
+
 
 let imagesContainer = document.getElementById('imagesContainer');
 imagesContainer.addEventListener('click', userClick);
@@ -90,21 +101,20 @@ function userClick(event) {
 
         if (event.target.id === 'firstImage') {
             Products.allImages[firstImageIndex].votes++;
-            Products.allImages[firstImageIndex].shownTimes++;
-            console.log('from first if', Products.allImages[firstImageIndex].votes);
+           
 
-        } else if (event.target.id === 'secondtImage') {
-            Products.allImages[secondtImageIndex].votes++;
-            Products.allImages[secondtImageIndex].shownTimes++;
+        } else if (event.target.id === 'secondImage') {
+            Products.allImages[secondImageIndex].votes++;
 
-        } else {
+        } else if (event.target.id === 'thirdImage'){
             Products.allImages[thirdImageIndex].votes++;
-            Products.allImages[thirdImageIndex].shownTimes++;
         }
         renderImages();
 
-    } else {
-
+    } else { 
+        let viewResults = document.getElementById('viewResults');
+        viewResults.addEventListener('click', ResultBtn);
+        viewResults.hidden=false;
 
         imagesContainer.removeEventListener('click', userClick);
     }
@@ -117,13 +127,14 @@ function userClick(event) {
 
 
 
-let viewResults = document.getElementById('viewResults');
-viewResults.addEventListener('click', ResultBtn);
+
 
 function ResultBtn() {
 
     let list = document.getElementById('votesList');
+
     let result;
+
     for (let i = 0; i < Products.allImages.length; i++) {
         result = document.createElement('li');
         list.appendChild(result);
@@ -131,4 +142,6 @@ function ResultBtn() {
         result.textContent = `${Products.allImages[i].name} has ${Products.allImages[i].votes} votes and was seen  ${Products.allImages[i].shownTimes} times`
 
     }
+    viewResults.removeEventListener('click', ResultBtn);
 }
+
