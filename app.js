@@ -5,7 +5,7 @@ let firstImageElement = document.getElementById('firstImage');
 let secondImageElement = document.getElementById('secondImage');
 let thirdImageElement = document.getElementById('thirdImage');
 
-let MaxAtt = 10;
+let MaxAtt = 25;
 let attCotnter = 0;
 
 let firstImageIndex;
