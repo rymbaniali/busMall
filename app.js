@@ -26,26 +26,26 @@ function Products(name, source) {
 Products.allImages = [];
 
 
-new Products('bag', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bag.jpg?raw=true');
-new Products('banana', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/banana.jpg?raw=true');
-new Products('bathroom', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bathroom.jpg?raw=true');
-new Products('boots', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/boots.jpg?raw=true');
-new Products('breakfast', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/breakfast.jpg?raw=true');
-new Products('bublegum', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bubblegum.jpg?raw=true');
-new Products('chair', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/chair.jpg?raw=true');
-new Products('cthulhu', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/cthulhu.jpg?raw=true');
-new Products('dog-duck', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/dog-duck.jpg?raw=true');
-new Products('dragon', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/dragon.jpg?raw=true');
-new Products('pen', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/pen.jpg?raw=true');
-new Products('pet-sweep', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/pet-sweep.jpg?raw=true');
-new Products('scissors', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/scissors.jpg?raw=true');
-new Products('shark', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/shark.jpg?raw=true');
-new Products('sweep', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/sweep.png?raw=true');
-new Products('tauntaun', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/tauntaun.jpg?raw=true');
-new Products('unicorn', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/unicorn.jpg?raw=true');
-new Products('usb.gif', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/usb.gif?raw=true');
-new Products('water-can', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/water-can.jpg?raw=true');
-new Products('wine-glass', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/wine-glass.jpg?raw=true');
+new Products('bag', 'assets/bag.jpg');
+new Products('banana', 'assets/banana.jpg');
+new Products('bathroom', 'assets/bathroom.jpg');
+new Products('boots', 'assets/boots.jpg');
+new Products('breakfast', 'assets/breakfast.jpg');
+new Products('bublegum', 'assets/bubblegum.jpg');
+new Products('chair', 'assets/chair.jpg');
+new Products('cthulhu', 'assets/cthulhu.jpg');
+new Products('dog-duck', 'assets/dog-duck.jpg');
+new Products('dragon', 'assets/dragon.jpg');
+new Products('pen', 'assets/pen.jpg');
+new Products('pet-sweep', 'assets/pet-sweep.jpg');
+new Products('scissors', 'assets/scissors.jpg');
+new Products('shark', 'assets/shark.jpg');
+new Products('sweep', 'assets/sweep.png');
+new Products('tauntaun', 'assets/tauntaun.jpg');
+new Products('unicorn', 'assets/unicorn.jpg');
+new Products('usb.gif', 'assets/usb.gif');
+new Products('water-can', 'assets/water-can.jpg');
+new Products('wine-glass', 'assets/wine-glass.jpg');
 
 console.log(Products.allImages);
 
@@ -118,7 +118,7 @@ function userClick(event) {
 
         imagesContainer.removeEventListener('click', userClick);
     }
-    renderImages();
+   
 
 
 
