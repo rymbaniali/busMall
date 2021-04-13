@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus mall</title>
 </head>
+
 <body>
     <main>
         <p>
-           Wealcome, you have to choose one of these Images
+            Wealcome, you have to choose one of these Images
         </p>
 
-        <div  id="imagesContainer">
-            <img src="" alt="firstImage" id="firstImage">
-            <img src="" alt="secondImage" id="secondImage">
-            <img src="" alt="thirdImage" id="thirdImage">
+        <div id="imagesContainer">
+            <img src="" alt="firstImage" id="firstImage" style="width: 200px;">
+            <img src="" alt="secondImage" id="secondImage" style="width: 200px;">
+            <img src="" alt="thirdImage" id="thirdImage" style="width: 200px;" >
         </div>
 
         <ul id="votesList">
 
         </ul>
-        <button   id="viewResults" hidden>View Results</button>
-        
+        <button id="viewResults" hidden>View Results</button>
+
     </main>
+
+    <footer>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 
 </body>
