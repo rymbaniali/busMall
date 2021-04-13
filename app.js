@@ -5,7 +5,7 @@ let firstImageElement = document.getElementById('firstImage');
 let secondImageElement = document.getElementById('secondImage');
 let thirdImageElement = document.getElementById('thirdImage');
 
-let MaxAtt = 10;
+let MaxAtt = 25;
 let attCotnter = 0;
 
 let firstImageIndex;
@@ -66,6 +66,7 @@ function generatRandomIndex() {
 
 }
 
+let rowArr = [];
 
 function renderImages() {
 
@@ -74,11 +75,7 @@ function renderImages() {
     thirdImageIndex = generatRandomIndex();
 
 
-
-
-
-    let rowArr = [firstImageIndex, secondImageIndex, thirdImageIndex];
-
+ 
 
     while ((rowArr.includes(firstImageIndex) || rowArr.includes(secondImageIndex) || rowArr.includes(thirdImageIndex)) || (firstImageIndex === secondImageIndex || firstImageIndex === thirdImageIndex || secondImageIndex === thirdImageIndex)) {
         firstImageIndex = generatRandomIndex();
@@ -89,17 +86,15 @@ function renderImages() {
 
 
     firstImageElement.src = Products.allImages[firstImageIndex].source;
-    Products.allImages[firstImageIndex].shownTimes++;
-
-
     secondImageElement.src = Products.allImages[secondImageIndex].source;
-    Products.allImages[secondImageIndex].shownTimes++;
-
-
     thirdImageElement.src = Products.allImages[thirdImageIndex].source;
+   
+    Products.allImages[firstImageIndex].shownTimes++;
+    Products.allImages[secondImageIndex].shownTimes++;
     Products.allImages[thirdImageIndex].shownTimes++;
 
 
+    rowArr = [firstImageIndex, secondImageIndex, thirdImageIndex];
 
     console.log(rowArr);
 
@@ -146,8 +141,8 @@ function userClick(event) {
 
         imagesContainer.removeEventListener('click', userClick);
     }
-   
 
+ 
 
 
 }
