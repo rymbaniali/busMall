@@ -31,12 +31,14 @@ function Products(name, source) {
 Products.allImages = [];
 
 
+
+
 new Products('bag', 'images/bag.jpg');
 new Products('banana', 'images/banana.jpg');
 new Products('bathroom', 'images/bathroom.jpg');
 new Products('boots', 'images/boots.jpg');
 new Products('breakfast', 'images/breakfast.jpg');
-new Products('bublegum', 'mages/bubblegum.jpg');
+new Products('bublegum', 'images/bubblegum.jpg');
 new Products('chair', 'images/chair.jpg');
 new Products('cthulhu', 'images/cthulhu.jpg');
 new Products('dog-duck', ' images/dog-duck.jpg');
@@ -51,6 +53,7 @@ new Products('unicorn', 'images/unicorn.jpg');
 new Products('usb.gif', 'images/usb.gif');
 new Products('water-can', 'images/water-can.jpg');
 new Products('wine-glass', 'images/wine-glass.jpg');
+
 
 console.log(Products.allImages);
 
@@ -143,7 +146,7 @@ function userClick(event) {
 
         imagesContainer.removeEventListener('click', userClick);
     }
-    renderImages();
+   
 
 
 
