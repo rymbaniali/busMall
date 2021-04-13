@@ -5,12 +5,16 @@ let firstImageElement = document.getElementById('firstImage');
 let secondImageElement = document.getElementById('secondImage');
 let thirdImageElement = document.getElementById('thirdImage');
 
-let MaxAtt = 25;
+let MaxAtt = 10;
 let attCotnter = 0;
 
 let firstImageIndex;
 let secondImageIndex;
 let thirdImageIndex;
+
+let imagesArr = [];
+let votesArr = [];
+let shownTimesArr = [];
 
 function Products(name, source) {
     this.name = name;
@@ -19,6 +23,7 @@ function Products(name, source) {
     this.shownTimes = 0;
 
     Products.allImages.push(this);
+    imagesArr.push(this.name);
 
 }
 
@@ -26,26 +31,26 @@ function Products(name, source) {
 Products.allImages = [];
 
 
-new Products('bag', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bag.jpg?raw=true');
-new Products('banana', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/banana.jpg?raw=true');
-new Products('bathroom', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bathroom.jpg?raw=true');
-new Products('boots', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/boots.jpg?raw=true');
-new Products('breakfast', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/breakfast.jpg?raw=true');
-new Products('bublegum', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/bubblegum.jpg?raw=true');
-new Products('chair', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/chair.jpg?raw=true');
-new Products('cthulhu', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/cthulhu.jpg?raw=true');
-new Products('dog-duck', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/dog-duck.jpg?raw=true');
-new Products('dragon', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/dragon.jpg?raw=true');
-new Products('pen', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/pen.jpg?raw=true');
-new Products('pet-sweep', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/pet-sweep.jpg?raw=true');
-new Products('scissors', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/scissors.jpg?raw=true');
-new Products('shark', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/shark.jpg?raw=true');
-new Products('sweep', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/sweep.png?raw=true');
-new Products('tauntaun', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/tauntaun.jpg?raw=true');
-new Products('unicorn', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/unicorn.jpg?raw=true');
-new Products('usb.gif', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/usb.gif?raw=true');
-new Products('water-can', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/water-can.jpg?raw=true');
-new Products('wine-glass', 'https://github.com/LTUC/amman-201d20/blob/main/class-11/lab/assets/wine-glass.jpg?raw=true');
+new Products('bag', 'images/bag.jpg');
+new Products('banana', 'images/banana.jpg');
+new Products('bathroom', 'images/bathroom.jpg');
+new Products('boots', 'images/boots.jpg');
+new Products('breakfast', 'images/breakfast.jpg');
+new Products('bublegum', 'mages/bubblegum.jpg');
+new Products('chair', 'images/chair.jpg');
+new Products('cthulhu', 'images/cthulhu.jpg');
+new Products('dog-duck', ' images/dog-duck.jpg');
+new Products('dragon', 'images/dragon.jpg');
+new Products('pen', 'images/pen.jpg');
+new Products('pet-sweep', 'images/pet-sweep.jpg');
+new Products('scissors', 'images/scissors.jpg');
+new Products('shark', 'images/shark.jpg');
+new Products('sweep', 'images/sweep.png');
+new Products('tauntaun', 'images/tauntaun.jpg');
+new Products('unicorn', 'images/unicorn.jpg');
+new Products('usb.gif', 'images/usb.gif');
+new Products('water-can', 'images/water-can.jpg');
+new Products('wine-glass', 'images/wine-glass.jpg');
 
 console.log(Products.allImages);
 
@@ -66,12 +71,19 @@ function renderImages() {
     thirdImageIndex = generatRandomIndex();
 
 
-    while (firstImageIndex === secondImageIndex || firstImageIndex === thirdImageIndex || secondImageIndex === thirdImageIndex) {
+
+
+
+    let rowArr = [firstImageIndex, secondImageIndex, thirdImageIndex];
+
+
+    while ((rowArr.includes(firstImageIndex) || rowArr.includes(secondImageIndex) || rowArr.includes(thirdImageIndex)) || (firstImageIndex === secondImageIndex || firstImageIndex === thirdImageIndex || secondImageIndex === thirdImageIndex)) {
         firstImageIndex = generatRandomIndex();
         secondImageIndex = generatRandomIndex();
         thirdImageIndex = generatRandomIndex();
 
     }
+
 
     firstImageElement.src = Products.allImages[firstImageIndex].source;
     Products.allImages[firstImageIndex].shownTimes++;
@@ -84,7 +96,13 @@ function renderImages() {
     thirdImageElement.src = Products.allImages[thirdImageIndex].source;
     Products.allImages[thirdImageIndex].shownTimes++;
 
+
+
+    console.log(rowArr);
+
+
 }
+
 
 renderImages();
 
@@ -101,20 +119,27 @@ function userClick(event) {
 
         if (event.target.id === 'firstImage') {
             Products.allImages[firstImageIndex].votes++;
-           
+
 
         } else if (event.target.id === 'secondImage') {
             Products.allImages[secondImageIndex].votes++;
 
-        } else if (event.target.id === 'thirdImage'){
+        } else if (event.target.id === 'thirdImage') {
             Products.allImages[thirdImageIndex].votes++;
         }
         renderImages();
 
-    } else { 
+    } else {
         let viewResults = document.getElementById('viewResults');
         viewResults.addEventListener('click', ResultBtn);
-        viewResults.hidden=false;
+        viewResults.hidden = false;
+
+        for (let i = 0; i < Products.allImages.length; i++) {
+            votesArr.push(Products.allImages[i].votes);
+            shownTimesArr.push(Products.allImages[i].shownTimes);
+
+        }
+        chart();
 
         imagesContainer.removeEventListener('click', userClick);
     }
@@ -123,10 +148,6 @@ function userClick(event) {
 
 
 }
-
-
-
-
 
 
 function ResultBtn() {
@@ -145,3 +166,44 @@ function ResultBtn() {
     viewResults.removeEventListener('click', ResultBtn);
 }
 
+
+// chart.js
+function chart() {
+    let ctx = document.getElementById('myChart').getContext('2d');
+
+    let chart = new Chart(ctx, {
+        // what type is the chart
+        type: 'bar',
+
+        //  the data for showing
+        data: {
+            //  for the names
+            labels: imagesArr,
+
+            datasets: [
+                {
+                    label: 'Products votes',
+                    data: votesArr,
+                    backgroundColor: [
+                        'rgb(251, 93, 76)',
+                    ],
+
+                    borderWidth: 1
+                },
+
+                {
+                    label: 'Products shown',
+                    data: shownTimesArr,
+                    backgroundColor: [
+                        'black',
+                    ],
+
+                    borderWidth: 1
+                }
+
+            ]
+        },
+        options: {}
+    });
+
+}
