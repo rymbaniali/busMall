@@ -25,7 +25,7 @@ function Products(name, source) {
     Products.allImages.push(this);
     imagesArr.push(this.name);
 
-    stringDataStorge();
+
 
 }
 
@@ -45,10 +45,11 @@ function getData() {
 
     let localData = localStorage.getItem('Products');
 
-    let parseData = JSON.parse(localData);
 
-    if (parseData !== null) {
 
+    if (localData !== null) {
+
+        let parseData = JSON.parse(localData);
         Products.allImages = parseData;
     }
 
@@ -123,7 +124,7 @@ function renderImages() {
     rowArr = [firstImageIndex, secondImageIndex, thirdImageIndex];
 
     console.log(rowArr);
-    stringDataStorge();
+
 
 
 }
@@ -138,8 +139,7 @@ imagesContainer.addEventListener('click', userClick);
 function userClick(event) {
 
     attCotnter++;
-    
-    stringDataStorge();
+
 
     console.log(attCotnter);
 
@@ -173,7 +173,7 @@ function userClick(event) {
     }
 
     stringDataStorge();
-    
+
 }
 
 
