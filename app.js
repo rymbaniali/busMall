@@ -5,7 +5,7 @@ let firstImageElement = document.getElementById('firstImage');
 let secondImageElement = document.getElementById('secondImage');
 let thirdImageElement = document.getElementById('thirdImage');
 
-let MaxAtt = 25;
+let MaxAtt = 10;
 let attCotnter = 0;
 
 let firstImageIndex;
@@ -25,11 +25,35 @@ function Products(name, source) {
     Products.allImages.push(this);
     imagesArr.push(this.name);
 
-}
+    stringDataStorge();
 
+}
 
 Products.allImages = [];
 
+
+function stringDataStorge() {
+
+    let dataArr = JSON.stringify(Products.allImages);
+
+    localStorage.setItem('Products', dataArr);
+
+}
+
+
+function getData() {
+
+    let localData = localStorage.getItem('Products');
+
+    let parseData = JSON.parse(localData);
+
+    if (parseData !== null) {
+
+        Products.allImages = parseData;
+    }
+
+    renderImages();
+}
 
 
 
@@ -55,7 +79,7 @@ new Products('water-can', 'images/water-can.jpg');
 new Products('wine-glass', 'images/wine-glass.jpg');
 
 
-console.log(Products.allImages);
+// console.log(Products.allImages);
 
 
 
@@ -75,7 +99,7 @@ function renderImages() {
     thirdImageIndex = generatRandomIndex();
 
 
- 
+
 
     while ((rowArr.includes(firstImageIndex) || rowArr.includes(secondImageIndex) || rowArr.includes(thirdImageIndex)) || (firstImageIndex === secondImageIndex || firstImageIndex === thirdImageIndex || secondImageIndex === thirdImageIndex)) {
         firstImageIndex = generatRandomIndex();
@@ -88,7 +112,9 @@ function renderImages() {
     firstImageElement.src = Products.allImages[firstImageIndex].source;
     secondImageElement.src = Products.allImages[secondImageIndex].source;
     thirdImageElement.src = Products.allImages[thirdImageIndex].source;
-   
+
+
+
     Products.allImages[firstImageIndex].shownTimes++;
     Products.allImages[secondImageIndex].shownTimes++;
     Products.allImages[thirdImageIndex].shownTimes++;
@@ -97,6 +123,7 @@ function renderImages() {
     rowArr = [firstImageIndex, secondImageIndex, thirdImageIndex];
 
     console.log(rowArr);
+    stringDataStorge();
 
 
 }
@@ -111,6 +138,9 @@ imagesContainer.addEventListener('click', userClick);
 function userClick(event) {
 
     attCotnter++;
+    
+    stringDataStorge();
+
     console.log(attCotnter);
 
     if (attCotnter <= MaxAtt) {
@@ -142,10 +172,11 @@ function userClick(event) {
         imagesContainer.removeEventListener('click', userClick);
     }
 
- 
-
-
+    stringDataStorge();
+    
 }
+
+
 
 
 function ResultBtn() {
@@ -205,3 +236,5 @@ function chart() {
     });
 
 }
+
+getData();
